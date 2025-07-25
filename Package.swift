@@ -1,28 +1,25 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.4
 import PackageDescription
 
 let package = Package(
-    name: "RIBs",
+    name: "CombineRIBs",
     platforms: [
-        .iOS(.v9),
+        .iOS(.v13),
     ],
     products: [
-        .library(name: "RIBs", targets: ["RIBs"]),
-    ],
-    dependencies: [
-        .package(url: "https://github.com/ReactiveX/RxSwift", from: "6.5.0"),
-        .package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", from: "2.2.2"), // for testTarget only
+        .library(name: "CombineRIBs", targets: ["CombineRIBs"]),
     ],
     targets: [
         .target(
-            name: "RIBs",
-            dependencies: ["RxSwift", "RxRelay"],
-            path: "RIBs"
+            name: "CombineRIBs",
+            path: "CombineRIBs",
+            exclude: ["Info.plist"]
         ),
         .testTarget(
-            name: "RIBsTests",
-            dependencies: ["RIBs", "CwlPreconditionTesting"],
-            path: "RIBsTests"
+            name: "CombineRIBsTests",
+            dependencies: ["CombineRIBs"],
+            path: "CombineRIBsTests",
+            exclude: ["Info.plist"]
         ),
     ]
 )
